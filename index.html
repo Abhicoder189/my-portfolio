@@ -34,6 +34,13 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      transition: height 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
     }
 
     nav a {
@@ -44,6 +51,23 @@
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .bar {
+      width: 28px;
+      height: 3px;
+      background: #cbd5e1;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
     }
 
     header {
@@ -166,6 +190,28 @@
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0 0 0;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        gap: 0;
+      }
+      .nav-links.show {
+        display: flex;
+        background: var(--footer-bg);
+        padding-bottom: 10px;
+      }
+      .hamburger {
+        display: flex;
+        margin-left: 20px;
+      }
+      nav a {
+        padding: 10px 20px;
+        width: 100%;
+        box-sizing: border-box;
       }
       header, section {
         padding: 20px;
@@ -177,11 +223,19 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="dsa.html">DSA Learning Journey</a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" tabindex="0">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="dsa.html">DSA Learning Journey</a>
+    </div>
   </nav>
 
   <!-- Header -->
@@ -286,6 +340,19 @@
   <footer>
     <p>Made with 💙 by Abhicoder | © 2024</p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        navLinks.classList.toggle('show');
+      }
+    });
+  </script>
 
 </body>
 </html>

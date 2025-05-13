@@ -20,6 +20,12 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      transition: height 0.3s;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
     }
     nav a {
       color: #cbd5e1;
@@ -28,6 +34,21 @@
     }
     nav a:hover {
       text-decoration: underline;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .bar {
+      width: 28px;
+      height: 3px;
+      background: #cbd5e1;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
     }
     header {
       background: #4f46e5;
@@ -38,15 +59,55 @@
     }
     section {
       padding: 40px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
     .card {
       background: #fff;
-      padding: 20px;
-      margin: 20px 0;
+      padding: 24px;
+      margin: 24px 0;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+    .dsa-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .dsa-table th, .dsa-table td {
+      padding: 12px 8px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .dsa-table th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+    .progress-bar {
+      width: 100%;
+      background: #e2e8f0;
+      border-radius: 6px;
+      height: 14px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: #14b8a6;
+      transition: width 0.4s;
+    }
+    .cpp-badge {
+      background: #00599c;
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: 0.95em;
+      font-weight: 500;
+      margin-left: 6px;
+      letter-spacing: 0.5px;
+      vertical-align: middle;
+      display: inline-block;
     }
     ul {
       margin: 0 0 0 20px;
@@ -58,48 +119,225 @@
       padding: 15px;
       margin-top: 40px;
     }
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0 0 0;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        gap: 0;
+      }
+      .nav-links.show {
+        display: flex;
+        background: #1e293b;
+        padding-bottom: 10px;
+      }
+      .hamburger {
+        display: flex;
+        margin-left: 20px;
+      }
+      nav a {
+        padding: 10px 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      section {
+        padding: 20px 5px;
+      }
+      .dsa-table th, .dsa-table td {
+        padding: 8px 4px;
+      }
+    }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html#about">About</a>
-    <a href="index.html#skills">Skills</a>
-    <a href="index.html#projects">Projects</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="dsa.html">DSA Learning Journey</a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" tabindex="0">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="dsa.html">DSA Learning Journey</a>
+    </div>
   </nav>
   <header>
     <h1>DSA Learning Journey</h1>
-    <p>Tracking my progress in Data Structures and Algorithms</p>
+    <p>Tracking my progress in Data Structures and Algorithms using <span class="cpp-badge">C++</span></p>
   </header>
   <section>
     <div class="card">
-      <h2>Why DSA?</h2>
+      <h2>Why Data Structures & Algorithms?</h2>
       <p>
-        Data Structures and Algorithms (DSA) are the backbone of efficient programming and problem-solving. I'm starting my journey to master DSA concepts to improve my coding skills and prepare for technical interviews.
+        Mastering Data Structures and Algorithms (DSA) is essential for writing efficient code and excelling in technical interviews. This page documents my structured journey to learn DSA concepts and problem-solving using <span class="cpp-badge">C++</span>.
       </p>
     </div>
     <div class="card">
-      <h2>My Progress</h2>
-      <ul>
-        <li><strong>Arrays:</strong> Basics, traversing, searching, insertion, deletion</li>
-        <li><strong>Linked Lists:</strong> (Planned)</li>
-        <li><strong>Stacks & Queues:</strong> (Planned)</li>
-        <li><strong>Trees & Graphs:</strong> (Future)</li>
-        <li><strong>Sorting & Searching Algorithms:</strong> (Future)</li>
-      </ul>
+      <h2>DSA Topics & Progress</h2>
+      <table class="dsa-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Arrays <span class="cpp-badge">C++</span></td>
+            <td>Learning</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Strings <span class="cpp-badge">C++</span></td>
+            <td>Learning</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 30%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Linked Lists <span class="cpp-badge">C++</span></td>
+            <td>Planned</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 10%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Stacks <span class="cpp-badge">C++</span></td>
+            <td>Planned</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 5%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Queues <span class="cpp-badge">C++</span></td>
+            <td>Planned</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 5%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Trees <span class="cpp-badge">C++</span></td>
+            <td>Future</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Graphs <span class="cpp-badge">C++</span></td>
+            <td>Future</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Recursion <span class="cpp-badge">C++</span></td>
+            <td>Learning</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Sorting Algorithms <span class="cpp-badge">C++</span></td>
+            <td>Planned</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 10%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Searching Algorithms <span class="cpp-badge">C++</span></td>
+            <td>Planned</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 10%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Hashing <span class="cpp-badge">C++</span></td>
+            <td>Future</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Greedy Algorithms <span class="cpp-badge">C++</span></td>
+            <td>Future</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Dynamic Programming <span class="cpp-badge">C++</span></td>
+            <td>Future</td>
+            <td>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="card">
-      <h2>Resources</h2>
+      <h2>Recommended Resources</h2>
       <ul>
         <li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">GeeksforGeeks DSA</a></li>
         <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
         <li><a href="https://www.youtube.com/playlist?list=PLqM7alHXFySGg6GSRmE2INIuY2DLFg5r-" target="_blank">YouTube: DSA Playlist</a></li>
+        <li><a href="https://www.codingninjas.com/courses/data-structures-and-algorithms-in-cpp" target="_blank">Coding Ninjas: DSA in C++</a></li>
+        <li><a href="https://www.interviewbit.com/courses/programming/" target="_blank">InterviewBit: Programming</a></li>
       </ul>
     </div>
   </section>
   <footer>
     <p>Made with 💙 by Abhicoder | © 2024</p>
   </footer>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+    // Optional: allow keyboard toggle for accessibility
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        navLinks.classList.toggle('show');
+      }
+    });
+  </script>
 </body>
 </html>
